@@ -2,39 +2,36 @@ package ie.murph.main.euro.read.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReadEuromillionsTextFile
 {
 //  14 columns
     private static final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
+    private static List<Integer> mainLottoNumbers = new ArrayList<Integer>();
+    private static List<Integer> bonusLottoNumbers = new ArrayList<Integer>();
     
     public static void readTextFile()
     {
 	Scanner read = scanner();
 	read.useDelimiter(",");
-	String firstLottoNo, secondLottoNo, thirdLottoNo, fourthLottoNo, fifthLottoNo, firstLottoBonusNo, secondLottoBonusNo;
+//	String firstLottoNo, secondLottoNo, thirdLottoNo, fourthLottoNo, fifthLottoNo, firstLottoBonusNo, secondLottoBonusNo;
 		
 	while(read.hasNext())
 	{
-	    read.next();
-	    read.next();
-	    read.next();
-	    read.next();
-	    read.next();
-	   firstLottoNo = read.next();			//6
-	   secondLottoNo = read.next();			//7
-	   thirdLottoNo = read.next();			//8
-	   fourthLottoNo = read.next();			//9
-	   fifthLottoNo = read.next();			//10
-	   firstLottoBonusNo = read.next();		//11
-	   secondLottoBonusNo = read.next();		//12
-	   read.next();					//13
-	   read.next();					//14
-	   System.out.println(firstLottoNo + " " + secondLottoNo + " " + thirdLottoNo + " " + fourthLottoNo + " " + fifthLottoNo + "\n");
-	   System.out.println(firstLottoBonusNo + " " + secondLottoBonusNo  + "\n");
+	   skip(read, 5);
+	   addMainEurpLottoNumbers(read, 5);
+	   addBonusEurpLottoNumbers(read, 2);
+	   skip(read, 2);
 	}
 	read.close();
+	
+	System.out.println("############################################-Mains-############################################");
+	printMainList();
+	System.out.println("############################################-Bonus-############################################");
+	printBonusList();
     }
     
     private static Scanner scanner()
@@ -48,5 +45,44 @@ public class ReadEuromillionsTextFile
 	    e.printStackTrace();
 	}
 	return new Scanner("");
+    }
+    
+    private static void skip(Scanner read, int numberOfRowsToSkip)
+    {
+	for(int iteration = 0; iteration < numberOfRowsToSkip; iteration++)
+	{
+	    read.next();
+	}
+    }
+    
+    private static void addMainEurpLottoNumbers(Scanner read, int numberOfLottoResults)
+    {
+	for(int iteration = 0; iteration < numberOfLottoResults; iteration++)
+	{
+	    mainLottoNumbers.add(convertStringToInteger(read.next()));
+	}
+    }
+    
+    private static void addBonusEurpLottoNumbers(Scanner read, int numberOfLottoResults)
+    {
+	for(int iteration = 0; iteration < numberOfLottoResults; iteration++)
+	{
+	    bonusLottoNumbers.add(convertStringToInteger(read.next()));
+	}
+    }
+    
+    private static int convertStringToInteger(String stringToConvert)
+    {
+	return Integer.parseInt(stringToConvert.trim());
+    }
+    
+    private static void printMainList()
+    {
+	mainLottoNumbers.forEach(System.out::println);
+    }
+    
+    private static void printBonusList()
+    {
+	bonusLottoNumbers.forEach(System.out::println);
     }
 }
