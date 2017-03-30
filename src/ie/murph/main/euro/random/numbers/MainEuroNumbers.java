@@ -1,9 +1,9 @@
-package ie.murph.main.euro.numbers;
+package ie.murph.main.euro.random.numbers;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import ie.murph.main.euro.api.RandomNumberGenerator;
+import ie.murph.main.euro.random.api.RandomNumberGenerator;
 
 public class MainEuroNumbers
 {

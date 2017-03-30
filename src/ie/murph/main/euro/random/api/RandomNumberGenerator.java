@@ -1,4 +1,4 @@
-package ie.murph.main.euro.api;
+package ie.murph.main.euro.random.api;
 
 import java.util.Random;
 
