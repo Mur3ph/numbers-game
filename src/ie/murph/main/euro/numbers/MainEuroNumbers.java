@@ -1,7 +1,9 @@
-package ie.murph.main.euro;
+package ie.murph.main.euro.numbers;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import ie.murph.main.euro.api.RandomNumberGenerator;
 
 public class MainEuroNumbers
 {
@@ -16,7 +18,7 @@ public class MainEuroNumbers
 	mainNumbers = new HashSet<Integer>();
     }
     
-    public void populteDataStructure()
+    public void selectMainEuroNumbers()
     {
 	while(mainNumbers.size() < 5)
 	{
