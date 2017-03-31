@@ -6,48 +6,51 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import ie.murph.main.euro.read.conversion.ConvertVariables;
+
 public class ReadEuromillionsTextFile
 {
-//  14 columns
-    private static final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
-    private static List<Integer> mainLottoNumbers = new ArrayList<Integer>();
-    private static List<Integer> bonusLottoNumbers = new ArrayList<Integer>();
+    //  14 columns
+    private final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
+    private final int FIRST_FIVE_COLUMNS_OF_TEXT_FILE = 5;
+    private final int LAST_TWO_COLUMNS_OF_TEXT_FILE = 2;
+    private final int FIVE_MAIN_LOTTO_NUMBERS_OF_TEXT_FILE = 5;
+    private final int TWO_BONUS_LOTTO_NUMBERS_OF_TEXT_FILE = 2;
+    private Scanner read;
+    private final List<Integer> mainNumbers;
+    private final List<Integer> bonusNumbers;
+    private final ConvertVariables convertVariables;
     
-    public static void readTextFile()
-    {
-	Scanner read = scanner();
-	read.useDelimiter(",");
-//	String firstLottoNo, secondLottoNo, thirdLottoNo, fourthLottoNo, fifthLottoNo, firstLottoBonusNo, secondLottoBonusNo;
-		
-	while(read.hasNext())
-	{
-	   skip(read, 5);
-	   addMainEurpLottoNumbers(read, 5);
-	   addBonusEurpLottoNumbers(read, 2);
-	   skip(read, 2);
-	}
-	read.close();
-	
-	System.out.println("############################################-Mains-############################################");
-	printMainList();
-	System.out.println("############################################-Bonus-############################################");
-	printBonusList();
-    }
-    
-    private static Scanner scanner()
+    public ReadEuromillionsTextFile()
     {
 	try
 	{
-	    return new Scanner (new File(DATA_FILE_URL));
-	}
+	    read = new Scanner (new File(DATA_FILE_URL));
+	} 
 	catch (FileNotFoundException e)
 	{
 	    e.printStackTrace();
 	}
-	return new Scanner("");
+	mainNumbers = new ArrayList<Integer>();
+	bonusNumbers = new ArrayList<Integer>();
+	convertVariables = new ConvertVariables();
     }
     
-    private static void skip(Scanner read, int numberOfRowsToSkip)
+    public void readTextFile()
+    {
+	read.useDelimiter(",");
+		
+	while(read.hasNext())
+	{
+	   skip(FIRST_FIVE_COLUMNS_OF_TEXT_FILE);
+	   addMainEurpLottoNumbers();
+	   addBonusEurpLottoNumbers();
+	   skip(LAST_TWO_COLUMNS_OF_TEXT_FILE);
+	}
+	read.close();
+    }
+    
+    private void skip(int numberOfRowsToSkip)
     {
 	for(int iteration = 0; iteration < numberOfRowsToSkip; iteration++)
 	{
@@ -55,34 +58,29 @@ public class ReadEuromillionsTextFile
 	}
     }
     
-    private static void addMainEurpLottoNumbers(Scanner read, int numberOfLottoResults)
+    private void addMainEurpLottoNumbers()
     {
-	for(int iteration = 0; iteration < numberOfLottoResults; iteration++)
+	for(int iteration = 0; iteration < FIVE_MAIN_LOTTO_NUMBERS_OF_TEXT_FILE; iteration++)
 	{
-	    mainLottoNumbers.add(convertStringToInteger(read.next()));
+	    mainNumbers.add(convertVariables.convertStringToInteger(read.next()));
 	}
     }
     
-    private static void addBonusEurpLottoNumbers(Scanner read, int numberOfLottoResults)
+    private void addBonusEurpLottoNumbers()
     {
-	for(int iteration = 0; iteration < numberOfLottoResults; iteration++)
+	for(int iteration = 0; iteration < TWO_BONUS_LOTTO_NUMBERS_OF_TEXT_FILE; iteration++)
 	{
-	    bonusLottoNumbers.add(convertStringToInteger(read.next()));
+	    bonusNumbers.add(convertVariables.convertStringToInteger(read.next()));
 	}
     }
     
-    private static int convertStringToInteger(String stringToConvert)
+    public List<Integer> getMainNumbers()
     {
-	return Integer.parseInt(stringToConvert.trim());
+	return this.mainNumbers;
     }
     
-    private static void printMainList()
+    public List<Integer> getBonusNumbers()
     {
-	mainLottoNumbers.forEach(System.out::println);
-    }
-    
-    private static void printBonusList()
-    {
-	bonusLottoNumbers.forEach(System.out::println);
+	return this.bonusNumbers;
     }
 }

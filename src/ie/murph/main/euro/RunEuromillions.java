@@ -4,6 +4,8 @@ import ie.murph.main.euro.random.api.RandomNumberGenerator;
 import ie.murph.main.euro.random.numbers.BonusEuroNumbers;
 import ie.murph.main.euro.random.numbers.MainEuroNumbers;
 import ie.murph.main.euro.read.file.ReadEuromillionsTextFile;
+import ie.murph.main.euro.read.model.numbers.BonusNumbers;
+import ie.murph.main.euro.read.model.numbers.MainNumbers;
 
 public class RunEuromillions
 {
@@ -23,6 +25,17 @@ public class RunEuromillions
 	bonusEuroNumbers.selectBonusEuroNumbers();
 	bonusEuroNumbers.printBonusEuroNumbers();
 	
-	ReadEuromillionsTextFile.readTextFile();
+	System.out.println(" ");
+	
+	System.out.println("Reading from file");
+	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile();
+	readEuromillionsTextFile.readTextFile();
+	MainNumbers mainNumbers = new MainNumbers(readEuromillionsTextFile.getMainNumbers());
+	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getBonusNumbers());
+	
+	System.out.println(" ");
+	mainNumbers.printMainLottoNumbers();
+	System.out.println(" ");
+	bonusNumbers.printBonusLottoNumbers();
     }
 }
