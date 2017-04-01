@@ -3,6 +3,7 @@ package ie.murph.main.euro;
 import ie.murph.main.euro.random.api.RandomNumberGenerator;
 import ie.murph.main.euro.random.numbers.BonusEuroNumbers;
 import ie.murph.main.euro.random.numbers.MainEuroNumbers;
+import ie.murph.main.euro.read.conversion.ConvertVariables;
 import ie.murph.main.euro.read.file.ReadEuromillionsTextFile;
 import ie.murph.main.euro.read.model.numbers.BonusNumbers;
 import ie.murph.main.euro.read.model.numbers.MainNumbers;
@@ -28,7 +29,8 @@ public class RunEuromillions
 	System.out.println(" ");
 	
 	System.out.println("Reading from file");
-	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile();
+	ConvertVariables convertVariables = new ConvertVariables();
+	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile(convertVariables);
 	readEuromillionsTextFile.readTextFile();
 	MainNumbers mainNumbers = new MainNumbers(readEuromillionsTextFile.getMainNumbers());
 	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getBonusNumbers());
