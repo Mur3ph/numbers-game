@@ -43,8 +43,8 @@ public class ReadEuromillionsTextFile
 	while(isStillDataInTextFile())
 	{
 	   skip(FIRST_FIVE_COLUMNS_OF_TEXT_FILE);
-	   addMainEurpLottoNumbers();
-	   addBonusEurpLottoNumbers();
+	   addMainEuroLottoNumbers();
+	   addBonusEuroLottoNumbers();
 	   skip(LAST_TWO_COLUMNS_OF_TEXT_FILE);
 	}
 	closeScanner();
@@ -68,7 +68,7 @@ public class ReadEuromillionsTextFile
 	}
     }
     
-    private void addMainEurpLottoNumbers()
+    private void addMainEuroLottoNumbers()
     {
 	for(int iteration = 0; iteration < FIVE_MAIN_LOTTO_NUMBERS_OF_TEXT_FILE; iteration++)
 	{
@@ -76,7 +76,7 @@ public class ReadEuromillionsTextFile
 	}
     }
     
-    private void addBonusEurpLottoNumbers()
+    private void addBonusEuroLottoNumbers()
     {
 	for(int iteration = 0; iteration < TWO_BONUS_LOTTO_NUMBERS_OF_TEXT_FILE; iteration++)
 	{
@@ -89,12 +89,12 @@ public class ReadEuromillionsTextFile
 	read.close();
     }
     
-    public List<Integer> getMainNumbers()
+    public List<Integer> getUnsortedMainLottoNumbersFromTextFile()
     {
 	return this.mainNumbers;
     }
     
-    public List<Integer> getBonusNumbers()
+    public List<Integer> getUnsortedBonusLottoNumbersFromTextFile()
     {
 	return this.bonusNumbers;
     }

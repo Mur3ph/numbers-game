@@ -32,8 +32,8 @@ public class RunEuromillions
 	ConvertVariables convertVariables = new ConvertVariables();
 	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile(convertVariables);
 	readEuromillionsTextFile.readTextFile();
-	MainNumbers mainNumbers = new MainNumbers(readEuromillionsTextFile.getMainNumbers());
-	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getBonusNumbers());
+	MainNumbers mainNumbers = new MainNumbers(readEuromillionsTextFile.getUnsortedMainLottoNumbersFromTextFile());
+	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getUnsortedBonusLottoNumbersFromTextFile());
 	
 	System.out.println(" ");
 	mainNumbers.printMainLottoNumbers();
