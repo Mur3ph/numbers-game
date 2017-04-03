@@ -1,8 +1,8 @@
 package ie.murph.main.euro;
 
 import ie.murph.main.euro.random.api.RandomNumberGenerator;
-import ie.murph.main.euro.random.numbers.BonusEuroNumbers;
-import ie.murph.main.euro.random.numbers.MainEuroNumbers;
+import ie.murph.main.euro.random.numbers.EuromillionsBonusNumbers;
+import ie.murph.main.euro.random.numbers.EuromillionsMainNumbers;
 import ie.murph.main.euro.read.conversion.ConvertVariables;
 import ie.murph.main.euro.read.file.ReadEuromillionsTextFile;
 import ie.murph.main.euro.read.model.numbers.BonusNumbers;
@@ -16,13 +16,13 @@ public class RunEuromillions
 	
 	System.out.println(" ");
 	
-	MainEuroNumbers firstFiveEuroNumbers = new MainEuroNumbers(randomNumberGenerator);
+	EuromillionsMainNumbers firstFiveEuroNumbers = new EuromillionsMainNumbers(randomNumberGenerator);
 	firstFiveEuroNumbers.selectMainEuroNumbers();
 	firstFiveEuroNumbers.printMainEuroNumbers();
 	
 	System.out.println(" ");
 	
-	BonusEuroNumbers bonusEuroNumbers = new BonusEuroNumbers(randomNumberGenerator);
+	EuromillionsBonusNumbers bonusEuroNumbers = new EuromillionsBonusNumbers(randomNumberGenerator);
 	bonusEuroNumbers.selectBonusEuroNumbers();
 	bonusEuroNumbers.printBonusEuroNumbers();
 	

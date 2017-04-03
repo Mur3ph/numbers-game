@@ -5,14 +5,14 @@ import java.util.Set;
 
 import ie.murph.main.euro.random.api.RandomNumberGenerator;
 
-public class MainEuroNumbers
+public class EuromillionsMainNumbers
 {
     private final int MAX_NUMBER = 50;
     private final int MIN_NUMBER = 1;
     private final Set<Integer> mainNumbers;
     private RandomNumberGenerator randomNumberGenerator;
     
-    public MainEuroNumbers(RandomNumberGenerator randomNumberGenerator)
+    public EuromillionsMainNumbers(RandomNumberGenerator randomNumberGenerator)
     {
 	this.randomNumberGenerator = randomNumberGenerator;
 	mainNumbers = new HashSet<Integer>();
