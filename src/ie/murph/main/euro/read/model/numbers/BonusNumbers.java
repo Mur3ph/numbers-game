@@ -11,6 +11,11 @@ public class BonusNumbers
 	this.bonusLottoNumbers = bonusLottoNumbers;
     }
     
+    public List<Integer> getBonusLottoNumbers()
+    {
+	return bonusLottoNumbers;
+    }
+    
     public void printBonusLottoNumbers()
     {
 	bonusLottoNumbers.forEach(System.out::println);

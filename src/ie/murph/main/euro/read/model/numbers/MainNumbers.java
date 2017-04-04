@@ -11,6 +11,11 @@ public class MainNumbers
 	this.mainLottoNumbers = mainLottoNumbers;
     }
     
+    public List<Integer> getMainLottoNumbers()
+    {
+	return mainLottoNumbers;
+    }
+    
     public void printMainLottoNumbers()
     {
 	mainLottoNumbers.forEach(System.out::println);
