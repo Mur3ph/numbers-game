@@ -38,12 +38,12 @@ public class RunEuromillions
 	
 	System.out.println(" ");
 	PopularNumbers mode = new PopularNumbers();
-	mode.getMostPopularLottoNumbersMode(mainNumbers.getMainLottoNumbers(), 5);
+	mode.getMostFrequentLottoNumbers(mainNumbers.getMainLottoNumbers(), 5);
 	mode.printMostPopularLottoNumbers();
 	mode.clearMostPopularNumbers();
 	
 	System.out.println(" ");
-	mode.getMostPopularLottoNumbersMode(bonusNumbers.getBonusLottoNumbers(), 2);
+	mode.getMostFrequentLottoNumbers(bonusNumbers.getBonusLottoNumbers(), 2);
 	mode.printMostPopularLottoNumbers();
 	mode.clearMostPopularNumbers();
 	

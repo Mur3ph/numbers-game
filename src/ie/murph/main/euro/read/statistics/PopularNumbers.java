@@ -7,66 +7,104 @@ import java.util.Set;
 
 public class PopularNumbers
 {
-    private Set<Integer> mostPopularNumbers;
+    private final Set<Integer> mostFrequentNumbers;
    
     public PopularNumbers()
     {
-	mostPopularNumbers = new HashSet<Integer>();
+	mostFrequentNumbers = new HashSet<Integer>();
     }
     
-    public void getMostPopularLottoNumbersMode( List<Integer> numbers, int amount)
+    public void getMostFrequentLottoNumbers( List<Integer> numbers, int amount)
     {
-	int mostPopularNumber, count = 0;
-	while(mostPopularNumbers.size() < amount)
+	int mostFrequentNumber, count = 0;
+	while(searchingForNumbers(amount))
 	{
-	    mostPopularNumber = getMostPopularMainLottoNumberMode(numbers);
-	    mostPopularNumbers.add(mostPopularNumber);
-	    numbers = removeTopMostPopularNumbersFromList(numbers, mostPopularNumber);
+	    mostFrequentNumber = getMostFrequentLottoNumber(numbers);
+	    storeNumberInSet(mostFrequentNumber);
+	    removeNumbersFromList(numbers, mostFrequentNumber);
 	    count++;
 	}
 	System.out.println("Count: " + count);
     }
     
-    private List<Integer> removeTopMostPopularNumbersFromList(List<Integer> numbers, int mostPopularNumber)
+    private boolean searchingForNumbers(int amount)
     {
-	numbers.removeAll(Arrays.asList(mostPopularNumber));
-	return numbers;
+	return mostFrequentNumbers.size() < amount;
     }
     
-    private int getMostPopularMainLottoNumberMode(List<Integer> numbers)
+    private int getMostFrequentLottoNumber(List<Integer> numbers)
     {
-	int count = 1, tempCount = 0, mostCommonNumber = 0;
-	for(int firstNumber : numbers)
+	int mostFrequentNumber = 0;
+	for(int numberChosenByFirstLoop : numbers)
 	{
-	    for(int secondNumber : numbers.subList(1, numbers.size()))
-	    {
-		if(firstNumber == secondNumber)
-		{
-		    tempCount++;
-		}
-	    }
-	    if(tempCount > count)
-	    {
-		mostCommonNumber = firstNumber;
-		count = tempCount;
-	    }
+	    mostFrequentNumber = findMostFrequentLottoNumber(numbers, numberChosenByFirstLoop);
 	}
-	return mostCommonNumber;
+	return mostFrequentNumber;
+    }
+    
+    private int findMostFrequentLottoNumber(List<Integer> numbers, int numberChosenByFirstLoop)
+    {
+	int tempCount = 0;
+	for(int numberChosenBySecondLoop : numbers.subList(1, numbers.size()))
+	{
+	    tempCount = increaseCountCheck(tempCount, numberChosenByFirstLoop, numberChosenBySecondLoop);
+	}
+	return mostFrequentNumber(numberChosenByFirstLoop, tempCount);
+    }
+    
+    private int increaseCountCheck(int tempCount, int numberChosenByFirstLoop, int numberChosenBySecondLoop)
+    {
+	if(isSameNumber(numberChosenByFirstLoop, numberChosenBySecondLoop))
+    	{
+    	   tempCount++;
+    	}
+	return tempCount;
+    }
+    
+    private boolean isSameNumber(int firstNumber, int secondNumber)
+    {
+	return firstNumber == secondNumber;
+    }
+    
+    private int mostFrequentNumber(int numberChosenByFirstLoop, int tempCount)
+    {
+	int count = 1, mostFrequentNumber = 0;
+	if(tempCountGreaterThanLastCount(tempCount, count))
+	{
+	    mostFrequentNumber = numberChosenByFirstLoop;
+	    count = tempCount;
+	}
+	return mostFrequentNumber;
+    }
+    
+    private boolean tempCountGreaterThanLastCount(int tempCount, int count)
+    {
+	return tempCount > count;
+    }
+
+    private void storeNumberInSet(int mostPopularNumber)
+    {
+	mostFrequentNumbers.add(mostPopularNumber);
+    }
+    
+    private void removeNumbersFromList(List<Integer> numbers, int mostPopularNumber)
+    {
+	numbers.removeAll(Arrays.asList(mostPopularNumber));
     }
     
     public Set<Integer> getMostPopularNumbers()
     {
-	return mostPopularNumbers;
+	return mostFrequentNumbers;
     }
     
     public void clearMostPopularNumbers()
     {
-	mostPopularNumbers.clear();
+	mostFrequentNumbers.clear();
     }
     
     public void printMostPopularLottoNumbers()
     {
-	mostPopularNumbers.forEach(System.out::println);
+	mostFrequentNumbers.forEach(System.out::println);
     }
     
 }
