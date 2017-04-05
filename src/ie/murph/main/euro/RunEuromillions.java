@@ -7,7 +7,7 @@ import ie.murph.main.euro.read.conversion.ConvertVariables;
 import ie.murph.main.euro.read.file.ReadEuromillionsTextFile;
 import ie.murph.main.euro.read.model.numbers.BonusNumbers;
 import ie.murph.main.euro.read.model.numbers.MainNumbers;
-import ie.murph.main.euro.read.statistics.PopularNumbers;
+import ie.murph.main.euro.read.statistics.MostFrequentNumbers;
 
 public class RunEuromillions
 {
@@ -37,19 +37,14 @@ public class RunEuromillions
 	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getUnsortedBonusLottoNumbersFromTextFile());
 	
 	System.out.println(" ");
-	PopularNumbers mode = new PopularNumbers();
+	MostFrequentNumbers mode = new MostFrequentNumbers();
 	mode.getMostFrequentLottoNumbers(mainNumbers.getMainLottoNumbers(), 5);
-	mode.printMostPopularLottoNumbers();
-	mode.clearMostPopularNumbers();
+	mode.printMostFrequentLottoNumbers();
+	mode.clearMostFrequentNumbers();
 	
 	System.out.println(" ");
 	mode.getMostFrequentLottoNumbers(bonusNumbers.getBonusLottoNumbers(), 2);
-	mode.printMostPopularLottoNumbers();
-	mode.clearMostPopularNumbers();
-	
-	System.out.println(" ");
-//	mainNumbers.printMainLottoNumbers();
-	System.out.println(" ");
-//	bonusNumbers.printBonusLottoNumbers();
+	mode.printMostFrequentLottoNumbers();
+	mode.clearMostFrequentNumbers();
     }
 }

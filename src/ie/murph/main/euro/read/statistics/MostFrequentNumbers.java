@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PopularNumbers
+public class MostFrequentNumbers
 {
     private final Set<Integer> mostFrequentNumbers;
    
-    public PopularNumbers()
+    public MostFrequentNumbers()
     {
 	mostFrequentNumbers = new HashSet<Integer>();
     }
@@ -82,27 +82,27 @@ public class PopularNumbers
 	return tempCount > count;
     }
 
-    private void storeNumberInSet(int mostPopularNumber)
+    private void storeNumberInSet(int mostFreguentNumber)
     {
-	mostFrequentNumbers.add(mostPopularNumber);
+	mostFrequentNumbers.add(mostFreguentNumber);
     }
     
-    private void removeNumbersFromList(List<Integer> numbers, int mostPopularNumber)
+    private void removeNumbersFromList(List<Integer> numbers, int mostFreguentNumber)
     {
-	numbers.removeAll(Arrays.asList(mostPopularNumber));
+	numbers.removeAll(Arrays.asList(mostFreguentNumber));
     }
     
-    public Set<Integer> getMostPopularNumbers()
+    public Set<Integer> getMostFrequentNumbers()
     {
 	return mostFrequentNumbers;
     }
     
-    public void clearMostPopularNumbers()
+    public void clearMostFrequentNumbers()
     {
 	mostFrequentNumbers.clear();
     }
     
-    public void printMostPopularLottoNumbers()
+    public void printMostFrequentLottoNumbers()
     {
 	mostFrequentNumbers.forEach(System.out::println);
     }
