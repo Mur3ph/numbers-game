@@ -13,30 +13,37 @@ public class RunEuromillions
 {
     public static void main(String[] args)
     {
-	RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+	System.out.println("Reading from random number generation!\n");
+	runLottoUsingRandomGenerator();
 	
 	System.out.println(" ");
+	
+	System.out.println("Reading from file!\n");
+	runLottoUsingTextFile();
+    }
+    
+    private static void runLottoUsingRandomGenerator()
+    {
+	RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 	
 	EuromillionsMainNumbers firstFiveEuroNumbers = new EuromillionsMainNumbers(randomNumberGenerator);
 	firstFiveEuroNumbers.selectMainEuroNumbers();
 	firstFiveEuroNumbers.printMainEuroNumbers();
 	
 	System.out.println(" ");
-	
 	EuromillionsBonusNumbers bonusEuroNumbers = new EuromillionsBonusNumbers(randomNumberGenerator);
 	bonusEuroNumbers.selectBonusEuroNumbers();
 	bonusEuroNumbers.printBonusEuroNumbers();
-	
-	System.out.println(" ");
-	
-	System.out.println("Reading from file");
+    }
+
+    private static void runLottoUsingTextFile()
+    {
 	ConvertVariables convertVariables = new ConvertVariables();
 	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile(convertVariables);
 	readEuromillionsTextFile.readTextFile();
 	MainNumbers mainNumbers = new MainNumbers(readEuromillionsTextFile.getUnsortedMainLottoNumbersFromTextFile());
 	BonusNumbers bonusNumbers = new BonusNumbers(readEuromillionsTextFile.getUnsortedBonusLottoNumbersFromTextFile());
 	
-	System.out.println(" ");
 	MostFrequentNumbers mode = new MostFrequentNumbers();
 	mode.getMostFrequentLottoNumbers(mainNumbers.getMainLottoNumbers(), 5);
 	mode.printMostFrequentLottoNumbers();
