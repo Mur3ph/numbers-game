@@ -12,7 +12,7 @@ public class ReadEuromillionsTextFile
 {
     // 14 columns
 //    private final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
-    private final String DATA_FILE_URL = "data/euro-lotto-numbers-24april2017.txt";
+    private final String DATA_FILE_URL = "data/euro-lotto-numbers-03june2017.txt";
     private final int FIRST_FIVE_COLUMNS_OF_TEXT_FILE = 5;
     private final int LAST_TWO_COLUMNS_OF_TEXT_FILE = 2;
     private final int FIVE_MAIN_LOTTO_NUMBERS_OF_TEXT_FILE = 5;
