@@ -13,16 +13,18 @@ public class RunEuromillions
 {
     public static void main(String[] args)
     {
+	RunEuromillions runEuromillions = new RunEuromillions();
+	
 	System.out.println("Reading from random number generation!\n");
-	runLottoUsingRandomGenerator();
+	runEuromillions.runLottoUsingRandomGenerator();
 	
 	System.out.println(" ");
 	
 	System.out.println("Reading from file!\n");
-	runLottoUsingTextFile();
+	runEuromillions.runLottoUsingTextFile();
     }
     
-    private static void runLottoUsingRandomGenerator()
+    private void runLottoUsingRandomGenerator()
     {
 	RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 	
@@ -36,7 +38,7 @@ public class RunEuromillions
 	bonusEuroNumbers.printBonusEuroNumbers();
     }
 
-    private static void runLottoUsingTextFile()
+    private void runLottoUsingTextFile()
     {
 	ConvertVariables convertVariables = new ConvertVariables();
 	ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile(convertVariables);
