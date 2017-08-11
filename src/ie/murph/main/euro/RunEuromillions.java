@@ -11,16 +11,30 @@ import ie.murph.main.euro.read.statistics.MostFrequentNumbers;
 
 public class RunEuromillions {
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		System.out.println("Reading from random number generation!\n");
 		runLottoUsingRandomGenerator();
+=======
+		RunEuromillions runEuromillions = new RunEuromillions();
+
+		System.out.println("Reading from random number generation!\n");
+		runEuromillions.runLottoUsingRandomGenerator();
+>>>>>>> 77e2fc365e0939820e4b21388bbdb9740cb58c47
 
 		System.out.println(" ");
 
 		System.out.println("Reading from file!\n");
+<<<<<<< HEAD
 		runLottoUsingTextFile();
 	}
 
 	private static void runLottoUsingRandomGenerator() {
+=======
+		runEuromillions.runLottoUsingTextFile();
+	}
+
+	private void runLottoUsingRandomGenerator() {
+>>>>>>> 77e2fc365e0939820e4b21388bbdb9740cb58c47
 		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
 		EuromillionsMainNumbers firstFiveEuroNumbers = new EuromillionsMainNumbers(randomNumberGenerator);
@@ -33,7 +47,11 @@ public class RunEuromillions {
 		bonusEuroNumbers.printBonusEuroNumbers();
 	}
 
+<<<<<<< HEAD
 	private static void runLottoUsingTextFile() {
+=======
+	private void runLottoUsingTextFile() {
+>>>>>>> 77e2fc365e0939820e4b21388bbdb9740cb58c47
 		ConvertVariables convertVariables = new ConvertVariables();
 		ReadEuromillionsTextFile readEuromillionsTextFile = new ReadEuromillionsTextFile(convertVariables);
 		readEuromillionsTextFile.readTextFile();
