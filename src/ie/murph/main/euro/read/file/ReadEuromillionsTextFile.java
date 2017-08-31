@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 import ie.murph.main.euro.read.conversion.ConvertVariables;
 
-<<<<<<< HEAD
 public class ReadEuromillionsTextFile {
 	// 14 columns
 	// private final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
@@ -43,31 +42,6 @@ public class ReadEuromillionsTextFile {
 			skip(LAST_TWO_COLUMNS_OF_TEXT_FILE);
 		}
 		closeScanner();
-=======
-public class ReadEuromillionsTextFile
-{
-    // 14 columns
-//  private final String DATA_FILE_URL = "data/euro-lotto-numbers.txt";
-    private final String DATA_FILE_URL = "data/euro-lotto-numbers-03june2017.txt";
-    private final int FIRST_FIVE_COLUMNS_OF_TEXT_FILE = 5;
-    private final int LAST_TWO_COLUMNS_OF_TEXT_FILE = 2;
-    private final int FIVE_MAIN_LOTTO_NUMBERS_OF_TEXT_FILE = 5;
-    private final int TWO_BONUS_LOTTO_NUMBERS_OF_TEXT_FILE = 2;
-    private Scanner read;
-    private final List<Integer> mainNumbers;
-    private final List<Integer> bonusNumbers;
-    private final ConvertVariables convertVariables;
-    
-    public ReadEuromillionsTextFile(ConvertVariables convertVariables)
-    {
-	try
-	{
-	    read = new Scanner (new File(DATA_FILE_URL));
-	} 
-	catch (FileNotFoundException e)
-	{
-	    e.printStackTrace();
->>>>>>> 77e2fc365e0939820e4b21388bbdb9740cb58c47
 	}
 
 	private void searchForComa() {
